@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flock · Design Artifacts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --green: #15795A;
+    --green-deep: #0B5640;
+    --green-soft: #E1F1E8;
+    --coral: #FB6A47;
+    --gold: #E89321;
+    --bg: #FAF7EF;
+    --card: #FFFFFF;
+    --ink: #19271F;
+    --ink2: #586259;
+    --ink3: #9AA095;
+    --border: #ECE7D8;
+    --border-strong: #DCD6C5;
+    --display: "Bricolage Grotesque", system-ui, sans-serif;
+    --body: "Hanken Grotesk", -apple-system, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(1200px 600px at 85% -10%, rgba(21,121,90,0.07), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(251,106,71,0.06), transparent 55%);
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 88px 32px 96px; }
+  .eyebrow {
+    font-family: var(--body);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); display: inline-flex; align-items: center; gap: 9px;
+  }
+  .eyebrow::before {
+    content: ""; width: 18px; height: 18px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--green), var(--coral));
+    box-shadow: 0 2px 8px -2px rgba(21,121,90,0.5);
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(40px, 7vw, 68px); font-weight: 700; line-height: 1.02;
+    letter-spacing: -0.025em; margin: 22px 0 18px; max-width: 16ch;
+    text-wrap: balance;
+  }
+  .lede { font-size: clamp(17px, 2.2vw, 20px); color: var(--ink2); max-width: 56ch; line-height: 1.55; }
+  .grid {
+    margin-top: 56px; display: grid; gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .card {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 22px; padding: 28px; text-decoration: none; color: inherit;
+    box-shadow: 0 1px 2px rgba(25,39,31,0.04), 0 18px 40px -26px rgba(25,39,31,0.22);
+    transition: transform 0.22s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.22s, border-color 0.22s;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(25,39,31,0.06), 0 34px 60px -28px rgba(25,39,31,0.34);
+    border-color: var(--border-strong);
+  }
+  .swatch {
+    height: 132px; margin: -28px -28px 22px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-end; padding: 16px; gap: 8px;
+  }
+  .swatch.wire { background: repeating-linear-gradient(135deg, #F1EDE1, #F1EDE1 11px, #E9E4D5 11px, #E9E4D5 22px); }
+  .swatch.flow { background: linear-gradient(135deg, #E1F1E8, #CDEEF1); }
+  .swatch.hifi { background: linear-gradient(135deg, #15795A, #0B5640 60%, #FB6A47); }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,0.7); }
+  .swatch.wire .dot { background: rgba(25,39,31,0.18); }
+  .num {
+    font-family: var(--display); font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--ink3); margin-bottom: 8px;
+  }
+  .card h2 { font-family: var(--display); font-size: 24px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px; }
+  .card p { font-size: 14.5px; color: var(--ink2); line-height: 1.5; flex: 1; }
+  .go {
+    margin-top: 20px; font-weight: 600; font-size: 14px; color: var(--green);
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .go svg { transition: transform 0.2s; }
+  .card:hover .go svg { transform: translateX(4px); }
+  footer {
+    margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--border);
+    font-size: 13.5px; color: var(--ink3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Flock · MVP</p>
+    <h1>Design artifacts</h1>
+    <p class="lede">The path from idea to polished product — the end-to-end user flow, the underlying wireframes, and the high-fidelity mockups for Flock.</p>
+
+    <div class="grid">
+      <a class="card" href="flows.html">
+        <div class="swatch flow"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="num">01 · JOURNEY</div>
+        <h2>User flows</h2>
+        <p>Every screen in sequence, plus three explorations of the hero deal-discovery moment.</p>
+        <span class="go">Open<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="card" href="wireframes.html">
+        <div class="swatch wire"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="num">02 · STRUCTURE</div>
+        <h2>Wireframes</h2>
+        <p>Low-fidelity layout of the seven core screens — what goes where, before color and craft.</p>
+        <span class="go">Open<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <a class="card" href="hifi.html">
+        <div class="swatch hifi"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="num">03 · POLISH</div>
+        <h2>Hi-fi mockups</h2>
+        <p>The finished product design — full palette, type, imagery, and interaction detail.</p>
+        <span class="go">Open<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+
+    <footer>
+      <span>Flock — group travel, planned together.</span>
+      <span>Design artifacts · 2026</span>
+    </footer>
+  </main>
+</body>
+</html>
